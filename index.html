@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
     <!----Head-->
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width" />
         <title>Madeleine St. John</title>
+        <link rel="shortcut icon" type="img/jpg" href="img/coding_icon.png">
         <link rel="stylesheet" type="text/css" href="Myversion.css">
     </head>
 
@@ -14,11 +17,13 @@
         <!---Navbar-->
         <div class="Navbar">
             <a class="active" href="#Home">Home</a>
+            <a href="#Slideshow">Slideshow</a>
             <a href="#About">About</a>
             <a href="#GitHub">GitHub</a>
-            <a href="Contact">Contact</a>
+            <!--Onclick and ondblclick functions add to open and close the contact form-->
+            <a onclick="openForm()" ondblclick="closeForm()" class="contact">Contact</a>
         </div>
-
+        <!--Put in first draft but not JS additon next three lines-->
         <!---Breaks inserted to add space between navbar and the first heading-->
         <br>
         <br>
@@ -51,6 +56,61 @@
             </strong>
         </div>
 
+        <!--Slideshow section added in JS course-->
+        <div id="Slideshow">
+            <div id="Slideshow_Background">
+                <div id="Slideshow_Container">
+                    <!--Slide 1 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="Img/img30.jpg" alt="Picture of me"-->
+                        <div class="text">I am available to assist you on your project!</div>
+                    </div>
+                    <!--Slide 2 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="img/HTML_CSS_and_JavaScript.jpeg" alt="HTML, CSS, and JS Logos">
+                        <div class="text">I am a full-stack software developer, <br> trained in:<br>HTML, CSS, Javascript,</div>
+
+                    </div>
+                    <!--Slide 3 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="Img/Python.png" alt="Python logo">
+                        <div class="text">the popular programming language Python,</div>
+                    </div>
+                    <!--Slide 4 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="Img/C_Sharp_and_Dot_NET.png" alt="C# logo">
+                        <div class="text">C#, .NET Framework, ASP.NET, MVC, </div>
+                    </div>
+                    <!--Slide 5 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="img/SQL_and_Database.jpg" alt="SQL logo">
+                        <div class="text">back end development, databases and SQL.</div>
+                    </div>
+                    <!--Slide 6 of 6-->
+                    <div class="mySlides fade">
+                        <img class="Slideshow_Images" src="img/typing.png" alt="Replace with a picture of your choosing">
+                        <div class="text"><a class="white-text contact" onclick="openForm()">Contact me now!</a></div>
+                    </div>
+
+                    <!--Previous and next buttons-->
+                    <a class="Previous" onclick="plusSlides(-1)">&#10094</a>
+                    <a class="Next" onclick="plusSlides(1)">&#10095</a>
+                </div>
+                <br><!--Adds a space between the slideshow images and the dots-->
+
+                <!--Slideshow dots (these are another way for the users to navigate through the slideshow)-->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+
+                </div>
+            </div>
+        </div>
+
         <!--About section-->
         <div class="Row" id="About">
             <!--Left column-->
@@ -65,7 +125,7 @@
                     <br>
                     <br> I am a graduate of <a href="https://www.learncodingeanywhere.com" target="_blank">The Tech Academy</a>'s Software Developer Boot Camp, and trained and experienced in the following web and programming languages: HTML, CSS, JavaScript, SQL, C# and more.
                     <br>
-                    <br> I am a full-stack developer and would love to work with you on your project. <a href="#Contact">Contact</a> me below!
+            
                 </p>
             </div>
         </div>
@@ -78,7 +138,7 @@
                 <p>
                     You can view my coding projects on my GitHub profile here:
                     <br>
-                    <p class="center"><a href="https://github.com/the-tech-academy" target="_blank">The Tech Adacemy GitHub</a></p>
+                    <p class="center"><a href="https://github.com/Madeleinesj" target="_blank">My GitHub profile</a></p>
             </div>
             <!--Right column-->
             <div class="Column_2">
@@ -87,23 +147,21 @@
         </div>
 
         <!--Contact section-->
-        <div class="Row" id="Contact">
+        <div id="Contact">
+            <button onclick="openForm()" class="Pop_Up_Button">CONTACT</button>
             <!--Contact image, left column-->
-            <div class="Column_2 Column_tall">
-                <img src="./Img/img11.jpg" alt=" ">
-            </div>
-            <!--Contact form, right column-->
-            <div class="Column_1 Column_tall">
-                <h1>Contact</h1>
-                <!--This specifies where and how to send the form data; we are leaving it blank-->
-                <form action="https://formspree.io/f/xkneaqgo" method="POST"><!-- Here we are utilizing a 3rd party service to submit the contact form data, insert your formspree endpoint in the action attribute-->
-                    <label>Name:</label>
-                        <input type="text" placeholder="Please enter your name here">
+            <div class="form-popup" id="myForm">
+                <form action="https://formspree.io/f/xzbqpgvv" method="POST" class="form-container"><!-- Here we are utilizing a 3rd party service to submit the contact form data, insert your formspree endpoint in the action attribute-->
+                    <h1>Contact</h1>
+                    <label for="name">Name:</label>
+                        <input type="text" placeholder="Type your name here" name="name" required>
                     <label>Email:</label>
-                        <input type="text" id="Email" name="Email" placeholder="Please enter your email here">
+                        <input type="text" id="Email" name="Email" placeholder="Type your email here" name="email" required>
                     <label>Message:</label>
-                        <input type="text" id="Message" name="Message" placeholder="Please write your message here">
-                        <input type="submit" value="SUBMIT">
+                        <input type="text" id="Message" name="Message" placeholder="Write your message here" name="message" required>
+                        
+                    <button type="submit" class="btn">Submit</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
                 </form>
             </div>
         </div>
@@ -111,9 +169,11 @@
         <!--Footer section-->
         <footer>
             <p>
-                <p class="center">&copy Prosper Consulting Inc., <a href="https://www.learncodinganywhere.com" target="_blank">The Tech Academy</a></p>
+                <p class="center">&copy Prosper Consulting Inc., <a href="https://www.learncodinganywhere.com" target="_blank">The Tech Academy</a></p><br>
             </p>
         </footer>
-
+        <script src="JS/portfolio.js" defer></script>
     </body>
 </html>
+
+<!--need to  make font fit in box -->
